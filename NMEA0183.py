@@ -2,7 +2,7 @@ class NMEA():
     def __init__(self) -> None:
         pass
 
-    def gprmc(utc_time, lat, lon, speed_knots, course, date, mag_var):
+    def generate_gprmc(self, utc_time, lat, lon, speed_knots, course, date, mag_var):
         """Generates a GPRMC string.
 
         Args:
@@ -40,10 +40,10 @@ class NMEA():
         checksum = hex(checksum).upper()[2:]
 
         # Construct the GPRMC string
-        gprmc_str = f"{data}*{checksum}"
+        gprmc_str = f"{data}*{checksum}\r\n"
         return gprmc_str
     
-    def generate_gpvtg(timestamp, course_true, course_magnetic, speed_knots):
+    def generate_gpvtg(self, timestamp, course_true, course_magnetic, speed_knots):
         """Generates a GPGVT string.
 
         Args:
@@ -64,10 +64,10 @@ class NMEA():
         checksum = hex(checksum).upper()[2:]
 
         # Construct the GPGVT string
-        gpvtg_str = f"{data}*{checksum}"
+        gpvtg_str = f"{data}*{checksum}\r\n"
         return gpvtg_str
     
-    def generate_gpgga(utc_time, lat, lon, fix_quality, num_sats, hdop, altitude, geoidal_sep):
+    def generate_gpgga(self, utc_time, lat, lon, fix_quality, num_sats, hdop, altitude, geoidal_sep):
         """Generates a GPGGA string.
 
         Args:
@@ -106,10 +106,10 @@ class NMEA():
         checksum = hex(checksum).upper()[2:]
 
         # Construct the GPGGA string
-        gpgga_str = f"{data}{checksum}"
+        gpgga_str = f"{data}{checksum}\r\n"
         return gpgga_str
     
-    def generate_gpgsa(mode, fix_type, prn_list, pdop):
+    def generate_gpgsa(self, mode, fix_type, prn_list, pdop):
         """Generates a GPGSA string.
 
         Args:
@@ -135,10 +135,10 @@ class NMEA():
         checksum = hex(checksum).upper()[2:]
 
         # Construct the GPGSA string
-        gpgsa_str = f"{data}{checksum}"
+        gpgsa_str = f"{data}{checksum}\r\n"
         return gpgsa_str
 
-    def generate_gpgsv(total_msgs, msg_num, total_svs, satellite_data):
+    def generate_gpgsv(self, total_msgs, msg_num, total_svs, satellite_data):
         """Generates a GPGSV string.
 
         Args:
@@ -164,10 +164,10 @@ class NMEA():
         checksum = hex(checksum).upper()[2:]
 
         # Construct the GPGSV string
-        gpgsv_str = f"{data}{checksum}"
+        gpgsv_str = f"{data}{checksum}\r\n"
         return gpgsv_str
     
-    def generate_gpgll(lat, lon, utc_time, status='A', mode='A'):
+    def generate_gpgll(self, lat, lon, utc_time, status='A', mode='A'):
         """Generates a GPGLL string.
 
         Args:
@@ -203,6 +203,6 @@ class NMEA():
         checksum = hex(checksum).upper()[2:]
 
         # Construct the GPGLL string
-        gpgll_str = f"{data}{checksum}"
+        gpgll_str = f"{data}{checksum}\r\n"
         return gpgll_str
 
